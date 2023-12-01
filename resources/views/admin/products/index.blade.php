@@ -8,14 +8,14 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4>Products
+                    <h4>Admin | Products
                         <a href="{{ url('admin/products/create') }}" class="btn btn-secondary btn-sm text-white float-end">
                             Add Products
                         </a>
                     </h4>
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-striped">
+                <div class="card-body table-responsive">
+                    <table  id="table" class="display table-hover table-bordered table-sm" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -41,8 +41,8 @@
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ $product->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                     <td>
-                                        <a href="{{ url('admin/products/' . $product->id . '/edit')}}" class="btn btn-secondary">Edit</a>
-                                        <a href="{{ url('admin/products/' . $product->id . '/delete')}}" onclick="return confirm('Are you sure you want to delete this {{$product->name}}?')" class="btn btn-danger">Delete</a>
+                                        <a href="{{ url('admin/products/' . $product->id . '/edit')}}" class="btn btn-secondary  mdi mdi-square-edit-outline"> Edit</a>
+                                        <a href="{{ url('admin/products/' . $product->id . '/delete')}}" onclick="return confirm('Are you sure you want to delete this {{$product->name}}?')" class="btn btn-danger mdi mdi-delete-outline"> Delete</a>
                                     </td>
 
                                 </tr>
@@ -58,4 +58,18 @@
             </div>
         </div>
     </div>
+    @push('script')
+
+<script>
+$(document).ready( function () {
+    var table = $('#table').DataTable();
+  } );
+
+  $.extend( $.fn.dataTable.defaults, {
+    responsive: true
+  } );
+
+      </script>
+  @endpush
 @endsection
+

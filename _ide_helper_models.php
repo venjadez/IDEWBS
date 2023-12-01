@@ -20,9 +20,12 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $category_id
+ * @property-read \App\Models\Category|null $category
  * @method static \Illuminate\Database\Eloquent\Builder|Brand newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Brand newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Brand query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Brand whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Brand whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Brand whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Brand whereName($value)
@@ -48,6 +51,8 @@ namespace App\Models{
  * @property int $status 0=visible,1=hidden
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Brand> $brands
+ * @property-read int|null $brands_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
@@ -188,6 +193,31 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Slider
+ *
+ * @property int $id
+ * @property string $title
+ * @property string|null $description
+ * @property string|null $image
+ * @property int $status 1=hidden,0=visible
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider whereUpdatedAt($value)
+ */
+	class Slider extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
@@ -218,5 +248,26 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Wishlist
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $product_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereUserId($value)
+ */
+	class Wishlist extends \Eloquent {}
 }
 

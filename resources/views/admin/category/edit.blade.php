@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header">
             <h4>Edit Category
-                <a href="{{url('admin/category')}}" class="btn btn-danger btn-sm text-white float-end">
+                <a href="{{url('admin/category')}}" class="btn btn-secondary mdi mdi-arrow-left btn-sm text-white float-end">
                         Back
                 </a>
             </h4>
@@ -16,7 +16,7 @@
 @method('PUT')
     <div class="row">
     <div class="col-md-6 mb-3 ">
-        <label>Name</label>
+        <label>Category Name</label>
         <input type="text" name="name" value="{{$category->name}}" class="form-control" required autofocus autocomplete="name"/>
     </div>
     <div class="col-md-6 mb-3 ">
@@ -33,7 +33,7 @@
     <img src="{{asset('uploads/category/'.$category->image)}}" width="60px"/>
     </div>
     <div class="col-md-6 mb-3 ">
-        <label>Status</label><br/>
+        <label>Status (Check = hide)</label><br/>
         <input type="checkbox" name="status" {{$category->status == '1' ? 'checked':'' }} autocomplete="status" />
     </div>
     <br/>
@@ -50,7 +50,6 @@
     </div>
     <div class="col-md-12 mb-3 ">
         <label>Meta Description</label>
-  
         <textarea name="meta_description" class="form-control" rows="3" required autocomplete="meta_description">{{$category->meta_description}}</textarea>
     </div>
     <div class="col-md-12 mb-3 ">

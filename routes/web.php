@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//   return view('welcome');
+// });
 
 Auth::routes();
+
+// fronted routes
+Route::get('/', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'index']);
+Route::get('/collections', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'categories']);
+Route::get('/collections/{category_slug}', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'products']);
+Route::get('/collections/{category_slug}/{product_slug}', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'productView']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -49,6 +54,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::post('product-color/{prod_color_id}', 'updateProdColorQty');
         Route::get('/product-color/{prod_color_id}/remove', 'removeColor');
     });
+    // Color Routes
     Route::controller(App\Http\Controllers\Admin\ColorController::class)->group(function () {
         Route::get('/colors', 'index');
         Route::get('/colors/create', 'create');
@@ -56,5 +62,15 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/colors/{color}/edit', 'edit');
         Route::put('/colors/{color}/update', 'update');
         Route::get('/colors/{color}/remove', 'remove');
+    });
+    // Slider Routes
+    Route::controller(App\Http\Controllers\Admin\SliderController::class)->group(function () {
+        Route::get('/sliders', 'index');
+        Route::get('/sliders/tableSilders', 'tableSliders')->name('tableSliders');
+        Route::get('/sliders/create', 'create');
+        Route::post('/sliders/store', 'store');
+        Route::get('/sliders/{slider}/edit', 'edit');
+        Route::put('/sliders/{slider}/update', 'update');
+        Route::get('/sliders/{slider}/destroy', 'destroy');
     });
 });

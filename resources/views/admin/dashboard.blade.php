@@ -8,6 +8,7 @@
             @if (session('message'))
             <h2 class="alert alert-success"> {{ session('message') }}, {{ Auth::user()->name }} </h2>
             @endif
+            <h2>Dashboard</h2>
             <p class="mb-md-0">Your analytics dashboard template.</p>
           </div>
           <div class="d-flex">

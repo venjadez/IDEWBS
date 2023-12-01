@@ -29,18 +29,18 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    <h4>Category
-                        <a href="{{ url('admin/category/create') }}" class="btn btn-dark btn-sm float-end">
+                    <h4>Admin | Category
+                        <a href="{{ url('admin/category/create') }}" class="btn btn-dark btn-sm float-end mdi mdi-plus-circle-outline">
                             Add Category
                         </a>
                     </h4>
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-striped">
+                <div class="card-body table-responsive">
+                    <table  id="table" class="display table-hover table-bordered table-sm" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Category Name</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -53,9 +53,9 @@
                                     <td>{{ $category->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                     <td>
                                         <a href="{{ url('admin/category/' . $category->id . '/edit') }}"
-                                            class="btn btn-secondary">Edit</a>
+                                            class="btn btn-secondary mdi mdi-square-edit-outline">Edit</a>
                                         <a href="#" wire:click="deleteCategory({{ $category->id }})"
-                                            class="btn btn-danger" data-bs-toggle="modal"
+                                            class="btn btn-danger mdi mdi-delete-outline" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal">Delete</a>
                                     </td>
                                 </tr>
@@ -79,5 +79,15 @@
             window.addEventListener('close-modal', event => {
                 $('#deleteModal').modal('hide');
             });
-        </script>
+            $(document).ready( function () {
+  var table = $('#table').DataTable();
+} );
+
+$.extend( $.fn.dataTable.defaults, {
+  responsive: true
+} );
+
+
+       </script>
+
     @endpush

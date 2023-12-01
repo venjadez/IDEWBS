@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header">
             <h4>Add Category
-                <a href="{{url('admin/category')}}" class="btn btn-secondary btn-sm text-white float-end">
+                <a href="{{url('admin/category')}}" class="btn btn-secondary mdi mdi-arrow-left btn-sm text-white float-end">
                         Back
                 </a>
             </h4>
@@ -15,23 +15,24 @@
 @csrf
     <div class="row">
     <div class="col-md-6 mb-3 ">
-        <label>Name</label>
-        <input type="text" name="name" class="form-control" required autofocus autocomplete="name"/>
+        <label>Category Name</label>
+        <input type="text" name="name" class="form-control"  autofocus autocomplete="name"/>
     </div>
     <div class="col-md-6 mb-3 ">
         <label>Slug</label>
-        <input type="text" name="slug" class="form-control" required autocomplete="slug"/>
+        <input type="text" name="slug" class="form-control"  autocomplete="slug"/>
     </div>
     <div class="col-md-12 mb-3 ">
         <label>Description</label>
-        <input type="text" name="description"   class="form-control"  required autocomplete="description"/>
+        <textarea type="text" name="description"   class="form-control" rows="3" autocomplete="description"></textarea>
     </div>
     <div class="col-md-6 mb-3 ">
         <label>Image</label>
-        <input type="file" name="image[]" class="form-control" autocomplete="image" />
+        <input type="file" name="image" class="form-control" autocomplete="image" />
     </div>
     <div class="col-md-6 mb-3 ">
-        <label>Status</label><br/>
+        <label>Status (Check = hide)</label>
+        <br/>
         <input type="checkbox" name="status" autocomplete="status" />
     </div>
     <br/>
@@ -40,15 +41,15 @@
     </div>
     <div class="col-md-12 mb-3 ">
         <label>Meta Title</label>
-        <input type="text" name="meta_title" class="form-control"  required autocomplete="meta_title"/>
+        <input type="text" name="meta_title" class="form-control" autocomplete="meta_title"/>
     </div>
     <div class="col-md-12 mb-3 ">
         <label>Meta Keyword</label>
-        <input type="text" name="meta_keyword"  class="form-control" required autocomplete="meta_keyword"/>
+        <input type="text" name="meta_keyword"  class="form-control" autocomplete="meta_keyword"/>
     </div>
     <div class="col-md-12 mb-3 ">
         <label>Meta Description</label>
-        <input type="text" name="meta_description" class="form-control"  required autocomplete="meta_description" />
+        <textarea type="text" name="meta_description" class="form-control" rows="3"  autocomplete="meta_description" ></textarea>
     </div>
     <div class="col-md-12 mb-3 ">
   <button type="submit" class="btn btn-primary float-end">Save</button>

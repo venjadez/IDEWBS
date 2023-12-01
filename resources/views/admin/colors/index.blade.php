@@ -7,14 +7,14 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    <h4>Colors List
+                    <h4>Admin | Colors
                         <a href="{{ url('admin/colors/create') }}" class="btn btn-secondary btn-sm text-white float-end">
                             Add Colors
                         </a>
                     </h4>
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-striped">
+                <div class="card-body table-responsive">
+                    <table  id="table" class="display table-hover table-bordered table-sm" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -31,8 +31,8 @@
                             <td>{{$data->name}}</td>
                             <td>{{$data->code}}</td>
                             <td>{{$data->status ? 'Hidden':'Visible'}}</td>
-                            <td><a href="{{url('admin/colors/'.$data->id.'/edit')}}" class="btn btn-secondary">Edit</a>
-                                <a href="{{url('admin/colors/'.$data->id.'/remove')}}" onclick="return confirm('Are you sure you want to delete Color {{$data->name}}?')" class="btn btn-danger">Remove</a>
+                            <td><a href="{{url('admin/colors/'.$data->id.'/edit')}}" class="btn btn-secondary mdi mdi-square-edit-outline"> Edit</a>
+                                <a href="{{url('admin/colors/'.$data->id.'/remove')}}" onclick="return confirm('Are you sure you want to delete Color {{$data->name}}?')" class="btn btn-danger mdi mdi-delete-outline"> Remove</a>
                         </td>
                         @empty
                         <tr>
@@ -46,3 +46,16 @@
         </div>
     </div>
 @endsection
+@push('script')
+
+<script>
+$(document).ready( function () {
+    var table = $('#table').DataTable();
+  } );
+
+  $.extend( $.fn.dataTable.defaults, {
+    responsive: true
+  } );
+
+      </script>
+  @endpush

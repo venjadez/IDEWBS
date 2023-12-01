@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Edit Product
-                        <a href="{{ url('admin/products') }}" class="btn btn-secondary btn-sm text-white float-end">
+                        <a href="{{ url('admin/products') }}" class="btn btn-secondary btn-sm text-white float-end mdi mdi-arrow-left">
                             Back
                         </a>
                     </h4>
@@ -65,9 +65,9 @@
                                 <div class="mb-3">
                                     <label>Category</label>
                                     <select name="category_id" class="form-control">
+                                        <option value="">>-- Select Categories --<</option>
                                         @foreach ($categories as $category)
-                                            <option
-                                                value="{{ $category->id }}"{{ $category->id == $product->category_id ? 'selected' : '' }}>
+                                            <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>
                                                 {{ $category->name }}</option>
                                         @endforeach
                                     </select>
@@ -85,10 +85,11 @@
                                 <div class="mb-3">
                                     <label>Select Brand</label>
                                     <select name="brand" class="form-control">
+                                        <option value="">>-- Select Brand --<</option>
                                         @foreach ($brands as $brand)
-                                            <option value="{{ $brand->id }}"
-                                                {{ $brand->id == $product->brand_id ? 'selected' : '' }}>
-                                                {{ $brand->name }}
+                                            <option value="{{ $brand->name}}"
+                                                {{ $brand->name == $product->brand ? 'selected' : '' }}>
+                                                {{ $brand->name }} ({{$brand->category->name}})
                                             </option>
                                         @endforeach
                                     </select>
@@ -149,7 +150,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label>Status</label>
+                                            <label>Status (Check = Hide)</label>
                                             <input type="checkbox" name="status" style="width: 50px; height: 50px;"
                                                 {{ $product->status == '1' ? 'checked' : '' }} />
                                         </div>
@@ -216,14 +217,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($product->productColors as $prodColor)
+                                            @forelse ($product->productColors as $prodColor)
+
+
                                                 <tr class="prod-color-tr">
                                                     <td>
-                                                        @if ($prodColor->color)
-                                                            {{ $prodColor->color->name }}
-                                                        @else
-                                                            No Color Found
-                                                        @endif
+                                                        {{ $prodColor->color->name }}
                                                     </td>
                                                     <td>
                                                         <div class="input-group mb-3" style="width:150px">
@@ -238,8 +237,15 @@
                                                          onclick="return confirm('Are you sure you want to delete {{ $prodColor->quantity }} of {{ $prodColor->color->name }}  ?')"   class="removeProdColorBtn btn btn-danger btn-sm text-white">Remove</button>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                                @empty
+                                                <tr>
+                                                    <td><div class="col-md-3">
+                                                        <h4>No Colors Found</h4>
+                                                    </div></td>
 
+                                                </tr>
+
+                                            @endforelse
                                         </tbody>
 
 
