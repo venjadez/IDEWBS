@@ -10,6 +10,7 @@ use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductImage;
+use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -28,8 +29,9 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $colors = Color::where('status', '0')->get();
+        $sizes = Size::where('status', '0')->get();
 
-        return view('admin.products.create', compact('categories', 'brands', 'colors'));
+        return view('admin.products.create', compact('categories', 'brands', 'colors', 'sizes'));
     }
 
     public function store(ProductFormRequest $request)
@@ -67,6 +69,7 @@ class ProductController extends Controller
                 ]);
             }
         }
+
         if ($request->colors) {
             foreach ($request->colors as $key => $color) {
                 $product->productColors()->create([

@@ -14,9 +14,9 @@
                     <div class="mb-3">
                         <label>Category</label>
                         <select type="text" wire:model.defer="category_id" class="form-control">
-                            <option value="" >>-- Select Category--<</option>
-                            @foreach ($categories as $data)
-                            <option value="{{$data->id}}">{{$data->name}}</option>
+                            <option value="">>-- Select Category--< </option>
+                                    @foreach ($categories as $data)
+                            <option value="{{ $data->id }}">{{ $data->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -64,13 +64,13 @@
                         <div class="mb-3">
                             <label>Category</label>
                             <select type="text" wire:model.defer="category_id" class="form-control">
-                                <option value="" >>-- Select Category--<</option>
-                                @foreach ($categories as $data)
-                                <option value="{{$data->id}}">{{$data->name}}</option>
+                                <option value="">>-- Select Category--< </option>
+                                        @foreach ($categories as $data)
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
                             </select>
                             @error('category_id')
-                                <small class="text-danger">{{$message}}</small>
+                                <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="mb-3">

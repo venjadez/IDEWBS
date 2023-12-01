@@ -26,6 +26,10 @@ Route::get('/collections', [App\Http\Controllers\FrontEnd\FrontEndController::cl
 Route::get('/collections/{category_slug}', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'products']);
 Route::get('/collections/{category_slug}/{product_slug}', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'productView']);
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('wishlist', [App\Http\Controllers\FrontEnd\WishlistController::class, 'index']);
+    Route::get('cart', [App\Http\Controllers\FrontEnd\CartController::class, 'index']);
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
@@ -53,6 +57,15 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/product-image/{product_image_id}/delete', 'removeImage');
         Route::post('product-color/{prod_color_id}', 'updateProdColorQty');
         Route::get('/product-color/{prod_color_id}/remove', 'removeColor');
+    });
+    // Size Routes
+    Route::controller(App\Http\Controllers\Admin\SizeController::class)->group(function () {
+        Route::get('/sizes', 'index');
+        Route::get('/sizes/create', 'create');
+        Route::post('/sizes/store', 'store');
+        Route::get('/sizes/{size_id}/edit', 'edit');
+        Route::put('/sizes/{size_id}/update', 'update');
+        Route::get('/sizes/{size_id}/remove', 'remove');
     });
     // Color Routes
     Route::controller(App\Http\Controllers\Admin\ColorController::class)->group(function () {

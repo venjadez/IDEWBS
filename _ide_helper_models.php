@@ -38,6 +38,31 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Cart
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $product_id
+ * @property int|null $product_color_id
+ * @property int $quantity
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart whereProductColorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart whereUserId($value)
+ */
+	class Cart extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Category
  *
  * @property int $id
@@ -122,6 +147,8 @@ namespace App\Models{
  * @property-read int|null $product_colors_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProductImage> $productImages
  * @property-read int|null $product_images_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProductSize> $productSizes
+ * @property-read int|null $product_sizes_count
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -193,6 +220,57 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\ProductSize
+ *
+ * @property int $id
+ * @property int $product_id
+ * @property int|null $color_id
+ * @property int|null $size_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $quantity
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Color> $color
+ * @property-read int|null $color_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $product
+ * @property-read int|null $product_count
+ * @property-read \App\Models\Size|null $size
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize whereColorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize whereSizeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductSize whereUpdatedAt($value)
+ */
+	class ProductSize extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Size
+ *
+ * @property int $id
+ * @property string $size_value
+ * @property int $status 1=hidden,0=visible
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Size newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Size newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Size query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Size whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Size whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Size whereSizeValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Size whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Size whereUpdatedAt($value)
+ */
+	class Size extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Slider
  *
  * @property int $id
@@ -259,6 +337,7 @@ namespace App\Models{
  * @property int $product_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Product $product
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist query()

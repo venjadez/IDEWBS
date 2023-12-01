@@ -30,7 +30,7 @@ class FrontEndController extends Controller
     {
         $categories = Category::where('status', '0')->get();
 
-        return view('layouts.inc.frontend.collections.category.index', compact('categories'));
+        return view('frontend.collections.category.index', compact('categories'));
     }
 
     /**
@@ -42,7 +42,7 @@ class FrontEndController extends Controller
     {
         $category = Category::where('slug', $category_slug)->first();
         if ($category) {
-            return view('layouts.inc.frontend.collections.product.index', compact('category'));
+            return view('frontend.collections.product.index', compact('category'));
         }
 
         return redirect()->back();
@@ -59,7 +59,7 @@ class FrontEndController extends Controller
         if ($category) {
             $product = $category->products()->where('slug', $product_slug)->where('status', '0')->first();
             if ($product) {
-                return view('layouts.inc.frontend.collections.product.view', compact('product', 'category'));
+                return view('frontend.collections.product.view', compact('product', 'category'));
             } else {
                 return redirect()->back();
             }

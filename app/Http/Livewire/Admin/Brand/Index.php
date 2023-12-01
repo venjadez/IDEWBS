@@ -6,11 +6,9 @@ use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Index extends Component
 {
-
     public $name;
     public $slug;
     public $status;
