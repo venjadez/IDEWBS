@@ -63,21 +63,20 @@
             </div>
         </div>
     </div>
-
-    @push('script')
-        <script>
-            window.addEventListener('close-modal', event => {
-                $('#addBrandModal').modal('hide');
-                $('#updateBrandModal').modal('hide');
-                $('#deleteBrandModal').modal('hide');
-            })
-            $(document).ready(function() {
-                var table = $('#table').DataTable();
-            });
-
-            $.extend($.fn.dataTable.defaults, {
-                responsive: true
-            });
-        </script>
-    @endpush
 @endsection
+@push('script')
+    <script>
+        window.addEventListener('close-modal', event => {
+            $('#addBrandModal').modal('hide');
+            $('#updateBrandModal').modal('hide');
+            $('#deleteBrandModal').modal('hide');
+        })
+        $(document).ready(function() {
+            var table = $('#table').DataTable();
+        });
+
+        $.extend($.fn.dataTable.defaults, {
+            responsive: true
+        });
+    </script>
+@endpush
