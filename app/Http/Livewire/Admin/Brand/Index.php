@@ -6,9 +6,13 @@ use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $name;
     public $slug;
     public $status;
@@ -48,12 +52,12 @@ class Index extends Component
     {
         $validatedData = $this->validate();
         Brand::create([
+            'category_id' => $this->category_id,
             'name' => $this->name,
             'slug' => Str::slug($this->slug),
             'status' => $this->status == true ? '1' : '0',
-            'category_id' => $this->category_id,
         ]);
-        session()->flash('message', 'Brand Added Successfully');
+        session()->flash('message', 'Brand Added');
         $this->dispatchBrowserEvent('close-modal');
         $this->resetInput();
     }
@@ -62,10 +66,10 @@ class Index extends Component
     {
         $this->brand_id = $brand_id;
         $brand = Brand::findOrFail($brand_id);
+        $this->category_id = $brand->category_id;
         $this->name = $brand->name;
         $this->slug = $brand->slug;
         $this->status = $brand->status;
-        $this->category_id = $brand->category_id;
     }
 
     public function updateBrand()
@@ -98,7 +102,7 @@ class Index extends Component
     public function render()
     {
         $categories = Category::where('status', 0)->get();
-        $brands = Brand::all();
+        $brands = Brand::orderBy('id', 'DESC')->paginate(10);
 
         return view('livewire.admin.brand.index', ['brands' => $brands, 'categories' => $categories])
             ->extends('layouts.admin')

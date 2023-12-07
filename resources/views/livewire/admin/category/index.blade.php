@@ -30,13 +30,15 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Admin | Category
-                        <a href="{{ url('admin/category/create') }}" class="btn btn-dark btn-sm float-end mdi mdi-plus-circle-outline">
+                        <a href="{{ url('admin/category/create') }}"
+                            class="btn btn-dark btn-sm float-end mdi mdi-plus-circle-outline">
                             Add Category
                         </a>
                     </h4>
                 </div>
                 <div class="card-body table-responsive">
-                    <table  id="table" class="display table-hover table-bordered table-sm" cellspacing="0" width="100%">
+                    <table id="table" class="display table-hover table-bordered table-sm" cellspacing="0"
+                        width="100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -79,15 +81,5 @@
             window.addEventListener('close-modal', event => {
                 $('#deleteModal').modal('hide');
             });
-            $(document).ready( function () {
-  var table = $('#table').DataTable();
-} );
-
-$.extend( $.fn.dataTable.defaults, {
-  responsive: true
-} );
-
-
-       </script>
-
+        </script>
     @endpush

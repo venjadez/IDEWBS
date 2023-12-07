@@ -29,6 +29,7 @@ Route::get('/collections/{category_slug}/{product_slug}', [App\Http\Controllers\
 Route::middleware(['auth'])->group(function () {
     Route::get('wishlist', [App\Http\Controllers\FrontEnd\WishlistController::class, 'index']);
     Route::get('cart', [App\Http\Controllers\FrontEnd\CartController::class, 'index']);
+    Route::get('checkout', [App\Http\Controllers\FrontEnd\CheckoutController::class, 'index']);
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

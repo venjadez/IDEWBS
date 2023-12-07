@@ -45,7 +45,7 @@ class CategoryController extends Controller
         $category->status = $request->status == true ? '1' : '0';
         $category->save();
 
-        return redirect('admin/category')->with('message', 'Category Added Successfully');
+        return redirect('admin/category')->with('message', 'Category Added');
     }
 
     public function edit(Category $category)
@@ -65,7 +65,7 @@ class CategoryController extends Controller
 
         if ($request->HasFile('image')) {
             $uploadPath = 'uploads/category/';
-            $path = 'uploads/category/'.$category->image;
+            $path = $category->image;
 
             if (File::exists($path)) {
                 File::delete($path);
@@ -84,6 +84,6 @@ class CategoryController extends Controller
         $category->status = $request->status == true ? '1' : '0';
         $category->update();
 
-        return redirect('admin/category')->with('message', 'Category Updated Successfully');
+        return redirect('admin/category')->with('message', 'Category Updated');
     }
 }

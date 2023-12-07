@@ -8,6 +8,7 @@ use Livewire\Component;
 class CartShow extends Component
 {
     public $cart;
+    public $totalPrice = 0;
 
     public function decrementQuantity(int $cartId)
     {
@@ -45,7 +46,7 @@ class CartShow extends Component
                 if ($productColor->quantity > $cartData->quantity) {
                     $cartData->increment('quantity');
                     $this->dispatchBrowserEvent('message', [
-                        'text' => 'Quantity Updated',
+                        'text' => 'Qty. Updated',
                         'type' => 'success',
                         'status' => 200,
                     ]);
