@@ -70,6 +70,8 @@ class CheckoutShow extends Component
                 'type' => 'success',
                 'status' => 200,
             ]);
+
+            return redirect()->to('thank-you');
         } else {
             $this->dispatchBrowserEvent('message', [
                 'text' => 'Something went wrong!',

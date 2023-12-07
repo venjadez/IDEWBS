@@ -100,4 +100,14 @@ class FrontEndController extends Controller
     public function destroy($id)
     {
     }
+
+    /**
+     * redirect to thank-you page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function thankyou()
+    {
+        return view('frontend.thank-you');
+    }
 }
