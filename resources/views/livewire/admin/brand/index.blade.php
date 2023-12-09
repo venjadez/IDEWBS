@@ -15,8 +15,7 @@
                         </h4>
                     </div>
                     <div class="card-body table-responsive">
-                        <table id="table" class="display table-hover table-bordered table-sm" cellspacing="0"
-                            width="100%">
+                        <table id="table" class="table table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -72,6 +71,7 @@
             $('#addBrandModal').modal('hide');
             $('#updateBrandModal').modal('hide');
             $('#deleteBrandModal').modal('hide');
-        })
+
+        });
     </script>
 @endpush

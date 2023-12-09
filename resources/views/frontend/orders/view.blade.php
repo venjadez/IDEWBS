@@ -8,7 +8,7 @@
                     <div class="shadow bg-white p-3">
 
                         <h4 class="text-primary">
-                            <i class="fa fa-shopping-cart text-dark"></i> My Order Details
+                            <i class="mdi mdi-shopping text-dark"></i> My Order Details
                             <a href="{{ url('orders') }}" class="btn btn-secondary btn-sm float-end">Back</a>
                         </h4>
                         <hr>
