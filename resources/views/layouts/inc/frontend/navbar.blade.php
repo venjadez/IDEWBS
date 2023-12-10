@@ -94,10 +94,10 @@
                         <a class="nav-link" href="{{ url('/collections') }}">All Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New Arrivals</a>
+                        <a class="nav-link" href="{{ url('/new-arrival') }}">New Arrivals</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Featured Products</a>
+                        <a class="nav-link" href="{{ url('/featured-products') }}">Featured Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Souvenirs</a>

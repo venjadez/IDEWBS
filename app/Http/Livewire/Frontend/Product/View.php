@@ -41,7 +41,7 @@ class View extends Component
             }
         } else {
             $this->dispatchBrowserEvent('message', [
-                'text' => 'Kindly Login to Continue',
+                'text' => 'Kindly, Login to continue',
                 'type' => 'info',
                 'status' => 401,
             ]);
@@ -180,7 +180,7 @@ class View extends Component
             return false;
         } else {
             $this->dispatchBrowserEvent('message', [
-                'text' => 'Kindly Login to Continue',
+                'text' => 'Kindly, Login to continue',
                 'type' => 'info',
                 'status' => 401,
             ]);

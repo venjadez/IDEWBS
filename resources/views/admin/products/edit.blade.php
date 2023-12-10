@@ -8,7 +8,8 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Edit Product
-                        <a href="{{ url('admin/products') }}" class="btn btn-secondary btn-sm text-white float-end mdi mdi-arrow-left">
+                        <a href="{{ url('admin/products') }}"
+                            class="btn btn-secondary btn-sm text-white float-end mdi mdi-arrow-left">
                             Back
                         </a>
                     </h4>
@@ -65,10 +66,11 @@
                                 <div class="mb-3">
                                     <label>Category</label>
                                     <select name="category_id" class="form-control">
-                                        <option value="">>-- Select Categories --<</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>
-                                                {{ $category->name }}</option>
+                                        <option value="">>-- Select Categories --<< /option>
+                                                @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ $category->id == $product->category_id ? 'selected' : '' }}>
+                                            {{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -85,12 +87,12 @@
                                 <div class="mb-3">
                                     <label>Select Brand</label>
                                     <select name="brand" class="form-control">
-                                        <option value="">>-- Select Brand --<</option>
-                                        @foreach ($brands as $brand)
-                                            <option value="{{ $brand->name}}"
-                                                {{ $brand->name == $product->brand ? 'selected' : '' }}>
-                                                {{ $brand->name }} ({{$brand->category->name}})
-                                            </option>
+                                        <option value="">>-- Select Brand --<< /option>
+                                                @foreach ($brands as $brand)
+                                        <option value="{{ $brand->name }}"
+                                            {{ $brand->name == $product->brand ? 'selected' : '' }}>
+                                            {{ $brand->name }} ({{ $brand->category->name }})
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -144,15 +146,25 @@
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label>Trending</label>
-                                            <input type="checkbox" name="trending" style="width: 50px; height: 50px;"
+                                            <br />
+                                            <input type="checkbox" name="trending" style="width: 30px; height: 30px;"
                                                 {{ $product->trending == '1' ? 'checked' : '' }} />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label>Status (Check = Hide)</label>
-                                            <input type="checkbox" name="status" style="width: 50px; height: 50px;"
+                                            <label>Status</label>
+                                            <br />
+                                            <input type="checkbox" name="status" style="width: 30px; height: 30px;"
                                                 {{ $product->status == '1' ? 'checked' : '' }} />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label>Featured</label>
+                                            <br />
+                                            <input type="checkbox" name="featured" style="width: 30px; height: 30px;"
+                                                {{ $product->featured == '1' ? 'checked' : '' }} />
                                         </div>
                                     </div>
                                 </div>
@@ -218,8 +230,6 @@
                                         </thead>
                                         <tbody>
                                             @forelse ($product->productColors as $prodColor)
-
-
                                                 <tr class="prod-color-tr">
                                                     <td>
                                                         {{ $prodColor->color->name }}
@@ -234,17 +244,19 @@
                                                     </td>
                                                     <td>
                                                         <button type="button" value="{{ $prodColor->id }}"
-                                                         onclick="return confirm('Are you sure you want to delete {{ $prodColor->quantity }} of {{ $prodColor->color->name }}  ?')"   class="removeProdColorBtn btn btn-danger btn-sm text-white">Remove</button>
+                                                            onclick="return confirm('Are you sure you want to delete {{ $prodColor->quantity }} of {{ $prodColor->color->name }}  ?')"
+                                                            class="removeProdColorBtn btn btn-danger btn-sm text-white">Remove</button>
                                                     </td>
                                                 </tr>
-                                                @empty
+                                            @empty
                                                 <tr>
-                                                    <td><div class="col-md-3">
-                                                        <h4>No Colors Found</h4>
-                                                    </div></td>
+                                                    <td>
+                                                        <div class="col-md-3">
+                                                            <h4>No Colors Found</h4>
+                                                        </div>
+                                                    </td>
 
                                                 </tr>
-
                                             @endforelse
                                         </tbody>
 
@@ -301,14 +313,14 @@
             $(document).on('click', '.removeProdColorBtn', function() {
                 var prod_color_id = $(this).val();
                 var thisClick = $(this);
-                 $.ajax({
-                     type: "GET",
-                     url: "/admin/product-color/"+prod_color_id+"/remove",
-                     success: function (response) {
+                $.ajax({
+                    type: "GET",
+                    url: "/admin/product-color/" + prod_color_id + "/remove",
+                    success: function(response) {
                         thisClick.closest('.prod-color-tr').remove();
                         alert(response.message)
-                     }
-                 });
+                    }
+                });
             });
         });
     </script>

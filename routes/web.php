@@ -21,10 +21,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // fronted routes
-Route::get('/', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'index']);
-Route::get('/collections', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'categories']);
-Route::get('/collections/{category_slug}', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'products']);
-Route::get('/collections/{category_slug}/{product_slug}', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'productView']);
+Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/collections', 'categories');
+    Route::get('//collections/{category_slug}', 'products');
+    Route::get('/collections/{category_slug}/{product_slug}', 'ProductView');
+    Route::get('/new-arrival', 'newArrival');
+    Route::get('/featured-products', 'featured');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('wishlist', [App\Http\Controllers\FrontEnd\WishlistController::class, 'index']);
