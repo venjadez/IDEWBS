@@ -15,7 +15,7 @@
                     </h4>
                 </div>
                 <div class="card-body table-responsive">
-                    <table  id="table" class="display table-hover table-bordered table-sm" cellspacing="0" width="100%">
+                    <table id="table" class="display table-hover table-bordered table-sm" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -41,8 +41,11 @@
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ $product->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                     <td>
-                                        <a href="{{ url('admin/products/' . $product->id . '/edit')}}" class="btn btn-secondary  mdi mdi-square-edit-outline"> Edit</a>
-                                        <a href="{{ url('admin/products/' . $product->id . '/delete')}}" onclick="return confirm('Are you sure you want to delete this {{$product->name}}?')" class="btn btn-danger mdi mdi-delete-outline"> Delete</a>
+                                        <a href="{{ url('admin/products/' . $product->id . '/edit') }}"
+                                            class="btn btn-secondary  mdi mdi-square-edit-outline"> Edit</a>
+                                        <a href="{{ url('admin/products/' . $product->id . '/delete') }}"
+                                            onclick="return confirm('Are you sure you want to delete this {{ $product->name }}?')"
+                                            class="btn btn-danger mdi mdi-delete-outline"> Delete</a>
                                     </td>
 
                                 </tr>
@@ -59,17 +62,14 @@
         </div>
     </div>
     @push('script')
+        <script>
+            $(document).ready(function() {
+                var table = $('#table').DataTable();
+            });
 
-<script>
-$(document).ready( function () {
-    var table = $('#table').DataTable();
-  } );
-
-  $.extend( $.fn.dataTable.defaults, {
-    responsive: true
-  } );
-
-      </script>
-  @endpush
+            $.extend($.fn.dataTable.defaults, {
+                responsive: true
+            });
+        </script>
+    @endpush
 @endsection
-

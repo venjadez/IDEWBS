@@ -104,5 +104,11 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/sliders/{slider}/edit', 'edit');
         Route::put('/sliders/{slider}/update', 'update');
         Route::get('/sliders/{slider}/destroy', 'destroy');
+
+        // Site settings
+        Route::controller(App\Http\Controllers\Admin\SettingController::class)->group(function () {
+            Route::get('settings', 'index');
+            Route::post('settings', 'store');
+        });
     });
 });

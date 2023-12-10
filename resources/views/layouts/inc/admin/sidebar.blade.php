@@ -68,7 +68,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#size" aria-expanded="false" aria-controls="ui-basic">
                 <i class="menu-icon mdi mdi-format-list-bulleted">
                 </i>
-                <span class="menu-title">Size</span>
+                <span class="menu-title">Sizes</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="size">
@@ -104,7 +104,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="documentation/documentation.html">
+            <a class="nav-link" href="{{ url('admin/settings') }}">
                 <i class="menu-icon mdi mdi-settings"></i>
                 <span class="menu-title">Site settings</span>
             </a>
