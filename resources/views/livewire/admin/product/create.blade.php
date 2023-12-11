@@ -131,46 +131,46 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab"
-            tabindex="0">
-            <div class="mb-3">
-                <label>Upload Product Images</label>
-                <input type="file" name="image[]" multiple class="form-control" />
+
+            <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab"
+                tabindex="0">
+                <div class="mb-3">
+                    <label>Upload Product Images</label>
+                    <input type="file" name="image[]" multiple class="form-control" />
+                </div>
+
             </div>
+            <div class="tab-pane fade border p-3" id="color-tab-pane" role="tabpanel" aria-labelledby="color-tab"
+                tabindex="0">
+                <div class="mb-3">
+                    <label>Select Attr.</label>
+                    <div class="row">
+                        @forelse ($colors as $data)
+                            <div class="col-md-3">
+                                <div class="p-2 border">
+                                    Color: <input type="checkbox" name="colors[{{ $data->id }}]"
+                                        value="{{ $data->id }}" />{{ $data->name }}
+                                    <br />
+                                    Quantity: <input type="number" name="colorquantity[{{ $data->id }}]"
+                                        style="width:70px; border:1px solid" />
 
-        </div>
-        <div class="tab-pane fade border p-3" id="color-tab-pane" role="tabpanel" aria-labelledby="color-tab"
-            tabindex="0">
-            <div class="mb-3">
-                <label>Select Attr.</label>
-                <div class="row">
-                    @forelse ($colors as $data)
-                        <div class="col-md-3">
-                            <div class="p-2 border">
-                                Color: <input type="checkbox" name="colors[{{ $data->id }}]"
-                                    value="{{ $data->id }}" />{{ $data->name }}
-                                <br />
-                                Quantity: <input type="number" name="colorquantity[{{ $data->id }}]"
-                                    style="width:70px; border:1px solid" />
-
+                                </div>
                             </div>
-                        </div>
-                    @empty
-                        <div class="col-md-12">
-                            <h1>No Colors Found</h1>
-                        </div>
-                    @endforelse
+                        @empty
+                            <div class="col-md-12">
+                                <h1>No Colors Found</h1>
+                            </div>
+                        @endforelse
+
+                    </div>
 
                 </div>
 
             </div>
-
         </div>
-</div>
-<div class="py-2 float-end">
-    <button type="submit" class="btn btn-primary">Submit</button>
-</div>
+        <div class="py-2 float-end">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
 
-</form>
+    </form>
 </div>

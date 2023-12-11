@@ -33,11 +33,11 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Meta keywords</label>
-                                <textarea type="text" name="meta_keyword" class="form-control" rows="3">{{ $setting->meta_keyword ?? '' }}"</textarea>
+                                <textarea type="text" name="meta_keyword" class="form-control" rows="3">{{ $setting->meta_keyword ?? '' }}</textarea>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Meta description</label>
-                                <textarea type="text" name="meta_description" class="form-control" rows="3">{{ $setting->meta_description ?? '' }}"</textarea>
+                                <textarea type="text" name="meta_description" class="form-control" rows="3">{{ $setting->meta_description ?? '' }}</textarea>
                             </div>
                         </div>
                     </div>

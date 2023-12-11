@@ -45,7 +45,8 @@
 
                                             <a href="#"wire:click="deleteBrand({{ $brand->id }})"
                                                 class="btn btn-danger btn-sm mdi mdi-delete-outline"
-                                                data-bs-toggle="modal" data-bs-target="#deleteBrandModal"> Remove</a>
+                                                data-bs-toggle="modal" data-bs-target="#deleteBrandModal">
+                                                Remove</a>
                                         </td>
                                     </tr>
                                 @empty
@@ -59,6 +60,7 @@
                         <div>
                             {{ $brands->links() }}
                         </div>
+
                     </div>
                 </div>
             </div>

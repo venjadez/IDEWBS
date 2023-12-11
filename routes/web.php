@@ -98,17 +98,26 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     // Slider Routes
     Route::controller(App\Http\Controllers\Admin\SliderController::class)->group(function () {
         Route::get('/sliders', 'index');
-        Route::get('/sliders/tableSilders', 'tableSliders')->name('tableSliders');
+        Route::get('/sliders/tableSliders', 'tableSliders')->name('tableSliders');
         Route::get('/sliders/create', 'create');
         Route::post('/sliders/store', 'store');
         Route::get('/sliders/{slider}/edit', 'edit');
         Route::put('/sliders/{slider}/update', 'update');
         Route::get('/sliders/{slider}/destroy', 'destroy');
 
-        // Site settings
+        // Site settings Routes
         Route::controller(App\Http\Controllers\Admin\SettingController::class)->group(function () {
             Route::get('settings', 'index');
             Route::post('settings', 'store');
+        });
+        // UserController routes
+        Route::controller(App\Http\Controllers\Admin\UserController::class)->group(function () {
+            Route::get('users', 'index');
+            Route::get('user/create', 'create');
+            Route::post('users', 'store');
+            Route::get('users/{userId}/edit', 'edit');
+            Route::put('users/{userId}/update', 'update');
+            Route::get('users/{userId}/remove', 'remove');
         });
     });
 });

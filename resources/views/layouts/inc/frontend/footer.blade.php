@@ -6,7 +6,7 @@
                     <h4 class="footer-heading">{{ $appSetting->website_name ?? 'website name' }}</h4>
                     <div class="footer-underline"></div>
                     <p>
-                        {{ $appSetting->page ?? 'website name' }}
+                        A name you can trust, for all your printing needs
                     </p>
                 </div>
                 <div class="col-md-3">

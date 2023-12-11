@@ -266,7 +266,7 @@
                             </div>
                         </div>
                         <div class="py-2 float-end">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-dark">Update</button>
                         </div>
                 </div>
 
