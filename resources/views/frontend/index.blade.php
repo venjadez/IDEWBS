@@ -21,11 +21,11 @@
                             <h1>
                                 {!! $data->title !!}
                             </h1>
-                            <p class="text text-black">
+                            <p>
                                 {!! $data->description !!}
                             </p>
                             <div class="">
-                                <a href="#" class="btn btn-slider  text text-black">
+                                <a href="#" class="btn btn-slider">
                                     Get Now
                                 </a>
                             </div>

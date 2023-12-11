@@ -41,7 +41,7 @@ Route::get('thank-you', [App\Http\Controllers\FrontEnd\FrontEndController::class
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
     // Order Routes
     Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function () {

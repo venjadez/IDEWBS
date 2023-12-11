@@ -2,19 +2,20 @@
     <div class="row">
         <div class="col-md-3">
             @if ($category->brands)
-            <div class="card">
-                <div class="card-header">
-                    <h4>Brands</h4>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Brands</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($category->brands as $data)
+                            <label for="d-block">
+                                <input type="checkbox" wire:model="brandInputs" value="{{ $data->name }}" />
+                                {{ $data->name }}
+                            </label>
+                            <br />
+                        @endforeach
+                    </div>
                 </div>
-                <div class="card-body">
-                    @foreach($category->brands as $data)
-                    <label for="d-block">
-                        <input type="checkbox" wire:model="brandInputs" value="{{ $data->name }}"/> {{ $data->name }}
-                    </label>
-                    <br/>
-                    @endforeach
-                </div>
-            </div>
             @endif
 
             <div class="card mt-3">
@@ -23,10 +24,12 @@
                 </div>
                 <div class="card-body">
                     <label for="d-block">
-                        <input type="radio" name="priceSort" wire:model="priceInput" value="high-to-low"/> High to Low
-                    </label><br/>
+                        <input type="radio" name="priceSort" wire:model="priceInput" value="high-to-low" /> High to
+                        Low
+                    </label><br />
                     <label for="d-block">
-                        <input type="radio" name="priceSort" wire:model="priceInput" value="low-to-high"/> Low to High
+                        <input type="radio" name="priceSort" wire:model="priceInput" value="low-to-high" /> Low to
+                        High
                     </label>
                 </div>
             </div>
@@ -67,7 +70,7 @@
                 @empty
                     <div class="col-md-6">
                         <div class="p-3">
-                            <h4>No Product Available for {{ $category->name }}</h4>
+                            <h4>No {{ $category->name }} Available </h4>
                         </div>
                     </div>
                 @endforelse
