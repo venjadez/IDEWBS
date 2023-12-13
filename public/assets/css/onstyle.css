@@ -181,6 +181,9 @@
 /* Product Card End */
 
 /* Product View */
+.py-3{
+    background-color: #f1efef;
+}
 .product-view .product-name{
     font-size: 24px;
     color: #2874f0;

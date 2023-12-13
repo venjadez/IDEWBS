@@ -116,23 +116,144 @@
             </div>
         </div>
     </div>
-</div>
-@push('scripts')
-    <script>
-        $(function() {
+    <div class="py-3 py-md-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h3>Related @if ($category)
+                            {{ $category->name }}
+                        @endif Products</h3>
+                    <div class="underline"></div>
+                </div>
+                <div class="col-md-12">
+                    @if ($category)
+                        <div class="owl-carousel owl-theme product-carousel">
+                            @foreach ($category->relatedProducts as $data)
+                                <div class="item mb-3">
+                                    <div class="product-card">
+                                        <div class="product-card-img">
+                                            <label class="stock bg-danger">New</label>
+                                            @if ($data->productImages->count() > 0)
+                                                <a
+                                                    href="{{ url('/collections/' . $data->category->slug . '/' . $data->slug) }}">
+                                                    <img src="{{ asset($data->productImages[0]->image) }}"
+                                                        alt="{{ $data->name }}">
+                                                </a>
+                                            @endif
+                                        </div>
+                                        <div class="product-card-body">
+                                            <p class="product-brand">{{ $data->brand }}</p>
+                                            <h5 class="product-name">
+                                                <a
+                                                    href="{{ url('/collections/' . $data->category->slug . '/' . $data->slug) }}">
+                                                    {{ $data->name }}
+                                                </a>
+                                            </h5>
+                                            <div>
+                                                <span class="selling-price">₱{{ $data->selling_price }}</span>
+                                                <span class="original-price">₱{{ $data->original_price }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="p-2">
+                            <h4>No Related Products Available</h4>
+                        </div>
+                    @endif
 
-            $("#exzoom").exzoom({
+                </div>
+            </div>
 
-                "navWidth": 60,
-                "navHeight": 60,
-                "navItemNum": 5,
-                "navItemMargin": 7,
-                "navBorder": 1,
-                "autoPlay": false,
-                "autoPlayTimeout": 2000
+        </div>
+    </div>
+    <div class="py-3 py-md-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Related @if ($product)
+                            {{ $product->brand }}
+                        @endif Products</h3>
+                    <div class="underline"></div>
+                </div>
+                <div class="col-md-12">
+                    @if ($category)
+                        <div class="owl-carousel owl-theme product-carousel">
+                            @foreach ($category->relatedProducts as $data)
+                                @if ($data->brand == "$product->brand")
+                                    <div class="item mb-3">
+                                        <div class="product-card">
+                                            <div class="product-card-img">
+                                                <label class="stock bg-danger">New</label>
+                                                @if ($data->productImages->count() > 0)
+                                                    <a
+                                                        href="{{ url('/collections/' . $data->category->slug . '/' . $data->slug) }}">
+                                                        <img src="{{ asset($data->productImages[0]->image) }}"
+                                                            alt="{{ $data->name }}">
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="product-card-body">
+                                                <p class="product-brand">{{ $data->brand }}</p>
+                                                <h5 class="product-name">
+                                                    <a
+                                                        href="{{ url('/collections/' . $data->category->slug . '/' . $data->slug) }}">
+                                                        {{ $data->name }}
+                                                    </a>
+                                                </h5>
+                                                <div>
+                                                    <span class="selling-price">₱{{ $data->selling_price }}</span>
+                                                    <span class="original-price">₱{{ $data->original_price }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="p-2">
+                            <h4>No Related Products Available</h4>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    @push('scripts')
+        <script>
+            $(function() {
+
+                $("#exzoom").exzoom({
+
+                    "navWidth": 60,
+                    "navHeight": 60,
+                    "navItemNum": 5,
+                    "navItemMargin": 7,
+                    "navBorder": 1,
+                    "autoPlay": false,
+                    "autoPlayTimeout": 2000
+
+                });
 
             });
-
-        });
-    </script>
-@endpush
+            $('.product-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            })
+        </script>
+    @endpush

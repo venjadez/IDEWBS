@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
@@ -23,14 +23,26 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
+
+    <style>
+        .form-control {
+            border: 1px solid #ddd;
+        }
+
+        li.nav-item.active {
+            background-color: #e9e9e9;
+        }
+    </style>
     @livewireStyles
     </head>
 
     <body>
         <div class="container-scroller">
             @include('layouts.inc.admin.navbar')
+
             <div class="container-fluid page-body-wrapper">
                 @include('layouts.inc.admin.sidebar')
+
                 <div class="main-panel">
                     <div class="content-wrapper">
                         @yield('content')

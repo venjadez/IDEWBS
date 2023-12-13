@@ -88,39 +88,6 @@ class FrontEndController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-    }
-
-    /**
      * redirect to thank-you page.
      *
      * @return \Illuminate\Http\Response
@@ -128,5 +95,16 @@ class FrontEndController extends Controller
     public function thankyou()
     {
         return view('frontend.thank-you');
+    }
+
+    public function searchProducts(Request $request)
+    {
+        if ($request->search) {
+            $searchProducts = Product::where('name', 'LIKE', '%'.$request->search.'%')->latest()->paginate(2);
+
+            return view('frontend.pages.search', compact('searchProducts'));
+        } else {
+            return redirect()->back()->with('message', 'Empty Search');
+        }
     }
 }

@@ -3,12 +3,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <h5 class="brand-name">{{ $appSetting->website_name ?? 'website name' }}</h5>
+
+                    <h5 class="brand-name"><img src="favicon.ico" alt="" width="35" height="26"
+                            class="d-inline-block align-text-top"> {{ $appSetting->website_name ?? 'website name' }}
+                    </h5>
                 </div>
                 <div class="col-md-5 my-auto">
-                    <form role="search">
+                    <form action="{{ url('search') }}" method="GET" role="search">
                         <div class="input-group">
-                            <input type="search" placeholder="Search your product" class="form-control" />
+                            <input type="search" name="search" value="" placeholder="Search your product"
+                                class="form-control" />
                             <button class="btn bg-white" type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -23,11 +27,13 @@
                                 <i class="fa fa-shopping-cart"></i> Cart (<livewire:frontend.cart-count />)
                             </a>
                         </li>
+                        <span style="color:rgb(250, 250, 250);font-weight:100">|</span>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('wishlist') }}">
                                 <i class="fa fa-heart"></i> Wishlist (<livewire:frontend.wishlist-count />)
                             </a>
                         </li>
+                        <span style="color:rgb(250, 250, 250);font-weight:100">|</span>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -47,11 +53,13 @@
                                     <i class="fa fa-user"></i> {{ Auth::user()->name }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('user-profile') }}"><i class="fa fa-user"></i>
+                                            Profile</a></li>
                                     <li><a class="dropdown-item" href="{{ url('orders') }}"><i class="fa fa-list"></i> My
                                             Orders</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="{{ url('wishlist') }}"><i class="fa fa-heart"></i> My
+                                    <li><a class="dropdown-item" href="{{ url('wishlist') }}"><i class="fa fa-heart"></i>
+                                            My
                                             Wishlist</a>
                                     </li>
                                     <li><a class="dropdown-item" href="{{ url('cart') }}"><i

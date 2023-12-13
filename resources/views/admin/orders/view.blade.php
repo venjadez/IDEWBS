@@ -17,11 +17,16 @@
                         <i class="mdi mdi-shopping text-dark"></i>My Orders
                         <a href="{{ url('admin/orders') }}" class="btn btn-dark btn-sm float-end mx-1">Back</a>
                         <a href="{{ url('admin/invoice/' . $order->id . '/generate') }}"
-                            class="btn btn-secondary btn-sm float-end mx-1">Download
-                            Invoice</a>
+                            class="btn btn-secondary btn-sm float-end mx-1">
+                            <span class="mdi mdi-download"></span> Download Invoice</a>
                         <a href="{{ url('admin/invoice/' . $order->id) }}" class="btn btn-secondary btn-sm float-end mx-1"
-                            target="_blank">View Invoice</a>
-
+                            target="_blank">
+                            <span class="mdi mdi-eye"></span> View Invoice
+                        </a>
+                        <a href="{{ url('admin/invoice/' . $order->id . '/mail') }}"
+                            class="btn btn-secondary btn-sm float-end mx-1" target="_blank">
+                            <span class="mdi mdi-mail"></span> Send Invoice Via Mail
+                        </a>
                     </h4>
                     <hr>
                     <div class="row">

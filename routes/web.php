@@ -28,6 +28,8 @@ Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->grou
     Route::get('/collections/{category_slug}/{product_slug}', 'ProductView');
     Route::get('/new-arrival', 'newArrival');
     Route::get('/featured-products', 'featured');
+    // Search Products
+    Route::get('search', 'searchProducts');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -36,6 +38,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('checkout', [App\Http\Controllers\FrontEnd\CheckoutController::class, 'index']);
     Route::get('orders', [App\Http\Controllers\FrontEnd\OrderController::class, 'index']);
     Route::get('orders/{orderId}', [App\Http\Controllers\FrontEnd\OrderController::class, 'view']);
+    Route::get('user-profile', [App\Http\Controllers\FrontEnd\UserController::class, 'index']);
+    Route::post('profile', [App\Http\Controllers\FrontEnd\UserController::class, 'update']);
+    Route::get('change-password', [App\Http\Controllers\FrontEnd\UserController::class, 'passwordCreate']);
+    Route::post('change-password', [App\Http\Controllers\FrontEnd\UserController::class, 'changePassword']);
 });
 Route::get('thank-you', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'thankyou']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -52,6 +58,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::put('/orders/{orderId}', 'updateOrderStatus');
         Route::get('/invoice/{orderId}', 'viewInvoice');
         Route::get('/invoice/{orderId}/generate', 'generateInvoice');
+        Route::get('/invoice/{orderId}/mail', 'sendInvoice');
     });
 
     // Category Routes
