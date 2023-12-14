@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 //   return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes([
+    'verify' => true,
+]);
 
 // fronted routes
 Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->group(function () {
@@ -32,7 +34,7 @@ Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->grou
     Route::get('search', 'searchProducts');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('wishlist', [App\Http\Controllers\FrontEnd\WishlistController::class, 'index']);
     Route::get('cart', [App\Http\Controllers\FrontEnd\CartController::class, 'index']);
     Route::get('checkout', [App\Http\Controllers\FrontEnd\CheckoutController::class, 'index']);
@@ -43,8 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('change-password', [App\Http\Controllers\FrontEnd\UserController::class, 'passwordCreate']);
     Route::post('change-password', [App\Http\Controllers\FrontEnd\UserController::class, 'changePassword']);
 });
-Route::get('thank-you', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'thankyou']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('thank-you', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'thankyou']);
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
