@@ -66,7 +66,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     // Category Routes
     Route::controller(App\Http\Controllers\Admin\CategoryController::class)->group(function () {
         Route::get('/category', 'index');
-        Route::get('/category/create', 'create');
+        Route::get('/category/create', 'create')->name('create-category');
         Route::post('/category', 'store');
         Route::get('/category/{category}/edit', 'edit');
         Route::put('/category/{category}', 'update');
@@ -77,7 +77,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     // Product Routes
     Route::controller(App\Http\Controllers\Admin\ProductController::class)->group(function () {
         Route::get('/products', 'index');
-        Route::get('/products/create', 'create');
+        Route::get('/products/create', 'create')->name('create-products');
         Route::post('/products', 'store');
         Route::get('/products/{product}/edit', 'edit');
         Route::put('/products/{product}', 'update');

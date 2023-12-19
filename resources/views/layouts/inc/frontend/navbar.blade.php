@@ -4,8 +4,9 @@
             <div class="row">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
 
-                    <h5 class="brand-name"><img src="favicon.ico" alt="" width="35" height="26"
-                            class="d-inline-block align-text-top"> {{ $appSetting->website_name ?? 'website name' }}
+                    <h5 class="brand-name"><img src="{{ asset('favicon.ico') }}" alt="" width="35" height="26"
+                            class="d-inline-block align-text-top">
+                        {{ $appSetting->website_name ?? 'website name' }}
                     </h5>
                 </div>
                 <div class="col-md-5 my-auto">
@@ -53,7 +54,8 @@
                                     <i class="fa fa-user"></i> {{ Auth::user()->name }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ url('user-profile') }}"><i class="fa fa-user"></i>
+                                    <li><a class="dropdown-item" href="{{ url('user-profile') }}"><i
+                                                class="fa fa-user"></i>
                                             Profile</a></li>
                                     <li><a class="dropdown-item" href="{{ url('orders') }}"><i class="fa fa-list"></i> My
                                             Orders</a>

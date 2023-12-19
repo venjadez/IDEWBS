@@ -43,6 +43,7 @@
                     </div>
                 </div>
             </div>
+            <hr />
             <div class="row">
                 <div class="col-md-3">
                     <div class="card card-body bg-info text-white mb-3">
@@ -68,19 +69,20 @@
                     </div>
                 </div>
             </div>
+            <hr />
             <div class="row">
                 <div class="col-md-3">
                     <div class="card card-body bg-secondary text-white mb-3">
                         <label>All Users</label>
                         <h1>{{ $allUsers }}</h1>
-                        <a href="{{ url('admin/orders') }} " class="text-white">view</a>
+                        <a href="{{ url('admin/users') }} " class="text-white">view</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body bg-secondary text-white mb-3">
                         <label>Total User</label>
                         <h1>{{ $totalUsers }}</h1>
-                        <a href="{{ url('admin/orders') }} " class="text-white">view</a>
+                        <a href="{{ url('admin/users') }} " class="text-white">view</a>
                     </div>
                 </div>
 
@@ -88,11 +90,12 @@
                     <div class="card card-body bg-secondary text-white mb-3">
                         <label>Total Admin</label></label>
                         <h1>{{ $totalAdmin }}</h1>
-                        <a href="{{ url('admin/orders') }} " class="text-white">view</a>
+                        <a href="{{ url('admin/users') }} " class="text-white">view</a>
                     </div>
                 </div>
 
             </div>
+            <hr />
         </div>
     </div>
     </div>
